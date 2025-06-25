@@ -1,3 +1,21 @@
+Voici le **code HTML complet et fonctionnel**, avec les éléments suivants :
+
+---
+
+### ✅ **Fonctionnalités intégrées :**
+
+1. **Page de connexion** (username : `ccg`, mot de passe : `suzuya`)
+2. **Navigation avant/arrière** entre les pages
+3. **Animations douces**
+4. **Effets de scanlines rétro**
+5. **Galerie horizontale**
+6. **Saisie avec touche Entrée**
+
+---
+
+### 📜 **Code HTML à copier-coller :**
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -55,7 +73,7 @@
       text-align: center;
       padding: 2rem;
       box-sizing: border-box;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transition: opacity 0.5s ease;
       position: absolute;
       top: 0;
       left: 0;
@@ -63,7 +81,7 @@
       pointer-events: none;
     }
 
-    .page.visible {
+    .visible {
       opacity: 1;
       pointer-events: auto;
     }
@@ -137,11 +155,12 @@
 </head>
 <body>
   <div class="scanlines">
-    <!-- Page 0: Login -->
+
+    <!-- Page 0: Connexion -->
     <div id="page0" class="page visible">
       <h1>Connexion</h1>
       <input type="text" id="username" placeholder="Identifiant" />
-      <input type="password" id="password" placeholder="Mot de passe" />
+      <input type="password" id="password" placeholder="Mot de passe" onkeydown="if(event.key==='Enter'){login()}" />
       <button onclick="login()">Se connecter</button>
     </div>
 
@@ -170,7 +189,7 @@
       <div class="profil-card">
         <h2>Historique Personnel</h2>
         <p>Né dans un quartier ravagé par la guerre entre goules et humains, Cody Ackerman a grandi dans l’ombre des traumas. Orphelin à l’âge de 8 ans, il fut témoin de l’exécution de ses parents par une goule masquée. Depuis ce jour, sa vie prit un seul sens : comprendre, prévoir, neutraliser.</p>
-        <p>Il rejoignit le CCG dès ses 18 ans, gravissant rapidement les échelons grâce à ses analyses tactiques froides et ses décisions implacables. C’est en découvrant les archives du Clan Suzuya qu’il comprit que sa place était là : au sein de ceux qui transforment la souffrance en discipline, la douleur en efficacité.</p>
+        <p>Il rejoignit le CCG dès ses 18 ans, gravissant rapidement les échelons grâce à ses analyses tactiques froides et ses décisions implacables.</p>
       </div>
       <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
@@ -199,4 +218,18 @@
           <img src="https://picsum.photos/id/1020/400/250" alt="Faux 4" />
         </div>
       </div>
-      <button
+      <button onclick="prevPage()">Retour</button>
+      <button onclick="alert('Fin du dossier.');">Terminer</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    let currentPage = 0;
+
+    function showPage(n) {
+      for (let i = 0; i <= 5; i++) {
+        const page = document.getElementById(`page${i}`);
+        if (page) {
+          page.classList.remove('visible');
+```
