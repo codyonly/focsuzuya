@@ -205,7 +205,6 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
   <script>
     let currentPage = 0;
 
@@ -214,4 +213,41 @@
         const page = document.getElementById(`page${i}`);
         if (page) {
           page.classList.remove('visible');
-```
+        }
+      }
+      const page = document.getElementById(`page${n}`);
+      if (page) {
+        page.classList.add('visible');
+        currentPage = n;
+      }
+    }
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === 'ccg' && password === 'suzuya') {
+        showPage(1);
+      } else {
+        alert("Identifiant ou mot de passe incorrect.");
+      }
+    }
+
+    function nextPage() {
+      if (currentPage < 5) {
+        showPage(currentPage + 1);
+      } else {
+        alert("Fin du dossier.");
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        showPage(currentPage - 1);
+      }
+    }
+
+    window.onload = () => showPage(0);
+  </script>
+</body>
+</html>
