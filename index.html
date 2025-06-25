@@ -55,14 +55,17 @@
       text-align: center;
       padding: 2rem;
       box-sizing: border-box;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, opacity 0.5s ease;
       position: absolute;
       top: 0;
       left: 0;
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .hidden {
-      display: none;
+    .page.visible {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     h1 {
@@ -72,7 +75,7 @@
     }
 
     button {
-      margin-top: 2rem;
+      margin: 1rem;
       padding: 1rem 2rem;
       background-color: #ff003c;
       color: white;
@@ -100,7 +103,6 @@
       line-height: 1.6;
     }
 
-    /* Galerie styles */
     .gallery {
       display: flex;
       overflow-x: auto;
@@ -123,19 +125,35 @@
       transform: scale(1.05);
       box-shadow: 0 0 25px #ff003c;
     }
+
+    input {
+      padding: 0.7rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+    }
   </style>
 </head>
 <body>
   <div class="scanlines">
-    <!-- Page 1 : Couverture -->
+    <!-- Page 0: Login -->
+    <div id="page0" class="page visible">
+      <h1>Connexion</h1>
+      <input type="text" id="username" placeholder="Identifiant" />
+      <input type="password" id="password" placeholder="Mot de passe" />
+      <button onclick="login()">Se connecter</button>
+    </div>
+
+    <!-- Page 1: Couverture -->
     <div id="page1" class="page">
       <h1>Dossier Confidentiel</h1>
       <p>Division Suzuya - CCG</p>
       <button onclick="nextPage()">Ouvrir le dossier</button>
     </div>
 
-    <!-- Page 2 : Présentation de Cody -->
-    <div id="page2" class="page hidden">
+    <!-- Page 2: Présentation -->
+    <div id="page2" class="page">
       <div class="profil-card">
         <h2>Cody Ackerman</h2>
         <p><strong>Âge :</strong> 26 ans</p>
@@ -143,32 +161,35 @@
         <p><strong>Division visée :</strong> Suzuya Squad</p>
         <p>Inspecteur méthodique, silencieux et déterminé. Cody Ackerman incarne une rigueur glaciale, un esprit d'analyse hors pair et un profond respect pour les méthodes chirurgicales du Clan Suzuya.</p>
       </div>
+      <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
     </div>
 
-    <!-- Page 3 : Background -->
-    <div id="page3" class="page hidden">
+    <!-- Page 3: Historique -->
+    <div id="page3" class="page">
       <div class="profil-card">
         <h2>Historique Personnel</h2>
         <p>Né dans un quartier ravagé par la guerre entre goules et humains, Cody Ackerman a grandi dans l’ombre des traumas. Orphelin à l’âge de 8 ans, il fut témoin de l’exécution de ses parents par une goule masquée. Depuis ce jour, sa vie prit un seul sens : comprendre, prévoir, neutraliser.</p>
-        <p>Il rejoignit le CCG dès ses 18 ans, gravissant rapidement les échelons grâce à ses analyses tactiques froides et ses décisions implacables. C’est en découvrant les archives du Clan Suzuya qu’il comprit que sa place était là : au sein de ceux qui transforment la souffrance en discipline, la douleur en efficacité. Cody ne cherche pas la vengeance. Il cherche l’ordre, la précision… et l’efficacité chirurgicale que seul le Clan Suzuya semble incarner.</p>
+        <p>Il rejoignit le CCG dès ses 18 ans, gravissant rapidement les échelons grâce à ses analyses tactiques froides et ses décisions implacables. C’est en découvrant les archives du Clan Suzuya qu’il comprit que sa place était là : au sein de ceux qui transforment la souffrance en discipline, la douleur en efficacité.</p>
       </div>
+      <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
     </div>
 
-    <!-- Page 4 : Compétences -->
-    <div id="page4" class="page hidden">
+    <!-- Page 4: Compétences -->
+    <div id="page4" class="page">
       <div class="profil-card">
         <h2>Compétences & Capacités</h2>
         <p><strong>Analyse stratégique :</strong> Maîtrise des schémas comportementaux des goules. Anticipation des mouvements ennemis avec une précision redoutable.</p>
-        <p><strong>Tacticien de terrain :</strong> Coordination d’équipes, création de plans de capture et intervention rapide. Cody transforme chaque mission en opération chirurgicale.</p>
-        <p><strong>Maîtrise des rapports & données :</strong> Capacité à compiler, trier et modéliser des données sur les goules pour fournir des briefings exploitables au CCG.</p>
+        <p><strong>Tacticien de terrain :</strong> Coordination d’équipes, création de plans de capture et intervention rapide.</p>
+        <p><strong>Maîtrise des rapports & données :</strong> Capacité à compiler, trier et modéliser des données pour fournir des briefings exploitables.</p>
       </div>
+      <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
     </div>
 
-    <!-- Page 5 : Galerie -->
-    <div id="page5" class="page hidden">
+    <!-- Page 5: Galerie -->
+    <div id="page5" class="page">
       <div class="profil-card">
         <h2>Photos de Cody Ackerman</h2>
         <div class="gallery">
@@ -178,17 +199,4 @@
           <img src="https://picsum.photos/id/1020/400/250" alt="Faux 4" />
         </div>
       </div>
-      <button onclick="nextPage()">Page suivante</button>
-    </div>
-  </div>
-
-  <script>
-    let currentPage = 1;
-    function nextPage() {
-      document.getElementById(`page${currentPage}`).classList.add('hidden');
-      currentPage++;
-      document.getElementById(`page${currentPage}`).classList.remove('hidden');
-    }
-  </script>
-</body>
-</html>
+      <button
