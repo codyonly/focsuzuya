@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dossier - Cody Ackerman</title>
+  <title>Dossier - Cody Suzuya</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
@@ -133,6 +133,23 @@
       border-radius: 5px;
       border: none;
     }
+
+    /* Scrollable text container for page 3 */
+    .scrollable-text {
+      height: 60vh;
+      overflow-y: auto;
+      padding-right: 10px; /* espace pour scrollbar */
+      text-align: justify;
+    }
+
+    /* Style scrollbar (optionnel) */
+    .scrollable-text::-webkit-scrollbar {
+      width: 6px;
+    }
+    .scrollable-text::-webkit-scrollbar-thumb {
+      background-color: #ff003c;
+      border-radius: 3px;
+    }
   </style>
 </head>
 <body>
@@ -156,11 +173,11 @@
     <!-- Page 2: Présentation -->
     <div id="page2" class="page">
       <div class="profil-card">
-        <h2>Cody Ackerman</h2>
+        <h2>Cody Suzuya</h2>
         <p><strong>Âge :</strong> 26 ans</p>
         <p><strong>Affiliation :</strong> CCG </p>
         <p><strong>Division visée :</strong> Suzuya Squad</p>
-        <p>Inspecteur méthodique, silencieux et déterminé. Cody Ackerman incarne une rigueur glaciale, un esprit d'analyse hors pair et un profond respect pour les méthodes chirurgicales du Clan Suzuya.</p>
+        <p>Inspecteur méthodique, silencieux et déterminé. Cody Suzuya incarne une rigueur glaciale, un esprit d'analyse hors pair et un profond respect pour les méthodes chirurgicales du Clan Suzuya.</p>
       </div>
       <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
@@ -170,13 +187,15 @@
     <div id="page3" class="page">
       <div class="profil-card">
         <h2>Historique Personnel</h2>
-        <p>Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya, une lignée marquée par la brutalité et la discipline. Dès son enfance, il a été soumis à un entraînement rigoureux, où chaque mouvement, chaque geste, est travaillé sans relâche à l’aide d’armes d’entraînement en bois, simulant le maniement du quinque. Ce dur apprentissage est un rite de passage essentiel pour forger non seulement la force physique, mais aussi le mental d’acier caractéristique des Suzuya.
-Né dans l’ombre de son père, un inspecteur respecté et redouté au sein du CCG, Cody a grandi avec la conscience aiguë que sa destinée est d’élever le clan toujours plus haut. Sa mère, guerrière aguerrie elle aussi, lui a transmis un sens profond de la loyauté et de la discipline, deux piliers indispensables à la survie et à la suprématie dans ce monde brutal.
-La perte tragique de sa mère, survenue lors d’une mission périlleuse contre une goule particulièrement vicieuse, fut un tournant décisif pour Cody. Plutôt que de céder à la douleur, il transforma ce chagrin en une force implacable, un feu intérieur qui ne cesse de grandir. Il s’est juré que jamais le clan Suzuya ne serait vulnérable, que leur nom dominerait le CCG et écraserait toutes les menaces.
-Dans ses jeunes années de formation, Cody perfectionna son habileté avec les armes d’entraînement en bois, apprenant à maîtriser la vitesse, la précision et la brutalité contrôlée qui caractérisent les techniques de combat Suzuya. Cette base solide lui permit, une fois devenu agent officiel, de manier les véritables quinques avec une aisance déconcertante.
-Au fil des missions, sa réputation s’est construite sur une violence méthodique et un sang-froid hors normes. Il ne laisse aucune place à l’hésitation, agissant toujours avec l’efficacité et la rigueur d’un prédateur. Sa vision est claire : faire rayonner le clan Suzuya comme l’élite incontestée du CCG.
-Plus qu’un simple combattant, Cody est un stratège qui sait fédérer ses alliés, tisser des liens solides avec les autres branches du CCG pour renforcer sa position. Chaque victoire qu’il remporte est une pierre de plus à l’édifice de la grandeur familiale.
-Aujourd’hui, Cody Suzuya avance d’un pas sûr vers un futur qu’il façonne de ses mains. Son nom résonne comme un avertissement pour tous ceux qui osent défier le clan. Il incarne la promesse d’un héritage éternel : la domination absolue, portée par une loyauté inébranlable et une détermination sans faille à hisser les Suzuya au sommet du CCG.</p>
+        <div class="scrollable-text">
+          <p>Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya, une lignée marquée par la brutalité et la discipline. Dès son enfance, il a été soumis à un entraînement rigoureux, où chaque mouvement, chaque geste, est travaillé sans relâche à l’aide d’armes d’entraînement en bois, simulant le maniement du quinque. Ce dur apprentissage est un rite de passage essentiel pour forger non seulement la force physique, mais aussi le mental d’acier caractéristique des Suzuya.
+          Né dans l’ombre de son père, un inspecteur respecté et redouté au sein du CCG, Cody a grandi avec la conscience aiguë que sa destinée est d’élever le clan toujours plus haut. Sa mère, guerrière aguerrie elle aussi, lui a transmis un sens profond de la loyauté et de la discipline, deux piliers indispensables à la survie et à la suprématie dans ce monde brutal.
+          La perte tragique de sa mère, survenue lors d’une mission périlleuse contre une goule particulièrement vicieuse, fut un tournant décisif pour Cody. Plutôt que de céder à la douleur, il transforma ce chagrin en une force implacable, un feu intérieur qui ne cesse de grandir. Il s’est juré que jamais le clan Suzuya ne serait vulnérable, que leur nom dominerait le CCG et écraserait toutes les menaces.
+          Dans ses jeunes années de formation, Cody perfectionna son habileté avec les armes d’entraînement en bois, apprenant à maîtriser la vitesse, la précision et la brutalité contrôlée qui caractérisent les techniques de combat Suzuya. Cette base solide lui permit, une fois devenu agent officiel, de manier les véritables quinques avec une aisance déconcertante.
+          Au fil des missions, sa réputation s’est construite sur une violence méthodique et un sang-froid hors normes. Il ne laisse aucune place à l’hésitation, agissant toujours avec l’efficacité et la rigueur d’un prédateur. Sa vision est claire : faire rayonner le clan Suzuya comme l’élite incontestée du CCG.
+          Plus qu’un simple combattant, Cody est un stratège qui sait fédérer ses alliés, tisser des liens solides avec les autres branches du CCG pour renforcer sa position. Chaque victoire qu’il remporte est une pierre de plus à l’édifice de la grandeur familiale.
+          Aujourd’hui, Cody Suzuya avance d’un pas sûr vers un futur qu’il façonne de ses mains. Son nom résonne comme un avertissement pour tous ceux qui osent défier le clan. Il incarne la promesse d’un héritage éternel : la domination absolue, portée par une loyauté inébranlable et une détermination sans faille à hisser les Suzuya au sommet du CCG.</p>
+        </div>
       </div>
       <button onclick="prevPage()">Retour</button>
       <button onclick="nextPage()">Page suivante</button>
@@ -185,74 +204,77 @@ Aujourd’hui, Cody Suzuya avance d’un pas sûr vers un futur qu’il façonne
     <!-- Page 4: Compétences -->
     <div id="page4" class="page">
       <div class="profil-card">
-        <h2>Compétences & Capacités</h2>
-        <p><strong>Analyse stratégique :</strong> Maîtrise des schémas comportementaux des goules. Anticipation des mouvements ennemis avec une précision redoutable.</p>
-        <p><strong>Tacticien de terrain :</strong> Coordination d’équipes, création de plans de capture et intervention rapide.</p>
-        <p><strong>Maîtrise des rapports & données :</strong> Capacité à compiler, trier et modéliser des données pour fournir des briefings exploitables.</p>
+        <h2>Compétences & Équipement</h2>
+        <p>- Maîtrise du quinque</p>
+        <p>- Techniques de combat avancées</p>
+        <p>- Analyse tactique et planification</p>
+        <p>- Maîtrise du terrain urbain</p>
       </div>
       <button onclick="prevPage()">Retour</button>
-      <button onclick="nextPage()">Page suivante</button>
+      <button onclick="nextPage()">Galerie</button>
     </div>
 
     <!-- Page 5: Galerie -->
     <div id="page5" class="page">
-      <div class="profil-card">
-        <h2>Photos de Cody Ackerman</h2>
-        <div class="gallery">
-          <img src="https://i.ibb.co/6cgq1hRz/3f003a8b-be26-4c27-9666-2d7264c51347.png" alt="Faux 1" />
-          <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/4:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_3.jpg" alt="Faux 2" />
-          <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/3:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_2.jpg" alt="Faux 3" />
-          <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/2:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_1.jpg" alt="Faux 4" />
-        </div>
+      <h2>Galerie d’images</h2>
+      <div class="gallery">
+        <img src="https://cdn.wallpapersafari.com/19/5/kr2YvH.jpg" alt="Cody Suzuya 1" />
+        <img src="https://pbs.twimg.com/media/FSuNWuLaQAAEqP1.jpg" alt="Cody Suzuya 2" />
+        <img src="https://pbs.twimg.com/media/E5xr6UvXoAY3YrF.jpg" alt="Cody Suzuya 3" />
       </div>
       <button onclick="prevPage()">Retour</button>
-      <button onclick="alert('Fin du dossier.');">Terminer</button>
+      <button onclick="nextPage()">Fin</button>
     </div>
+
+    <!-- Page 6: Fin -->
+    <div id="page6" class="page">
+      <h1>Fin du Dossier</h1>
+      <button onclick="prevPage()">Retour à la galerie</button>
+    </div>
+
   </div>
 
   <script>
     let currentPage = 0;
+    const maxPage = 6;
 
-    function showPage(n) {
-      for (let i = 0; i <= 5; i++) {
+    function showPage(num) {
+      for (let i = 0; i <= maxPage; i++) {
         const page = document.getElementById(`page${i}`);
         if (page) {
           page.classList.remove('visible');
         }
       }
-      const page = document.getElementById(`page${n}`);
-      if (page) {
-        page.classList.add('visible');
-        currentPage = n;
+      const current = document.getElementById(`page${num}`);
+      if (current) {
+        current.classList.add('visible');
+      }
+      currentPage = num;
+    }
+
+    function nextPage() {
+      if (currentPage < maxPage) {
+        showPage(currentPage + 1);
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 0) {
+        showPage(currentPage - 1);
       }
     }
 
     function login() {
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
+      // Ici, un simple check fictif
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
 
-      if (username === 'ccg' && password === 'suzuya') {
+      if (user === 'admin' && pass === 'password123') {
         showPage(1);
       } else {
         alert("Identifiant ou mot de passe incorrect.");
       }
     }
-
-    function nextPage() {
-      if (currentPage < 5) {
-        showPage(currentPage + 1);
-      } else {
-        alert("Fin du dossier.");
-      }
-    }
-
-    function prevPage() {
-      if (currentPage > 1) {
-        showPage(currentPage - 1);
-      }
-    }
-
-    window.onload = () => showPage(0);
   </script>
 </body>
 </html>
