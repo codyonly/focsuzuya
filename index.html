@@ -80,8 +80,7 @@
       opacity: 0;
     }
 
-    h1 {
-      font-size: 3rem;
+    h1, h2 {
       color: #ff003c;
       text-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
     }
@@ -103,16 +102,48 @@
       padding: 2rem;
       border-radius: 10px;
       box-shadow: 0 0 15px rgba(255, 0, 60, 0.3);
-      max-width: 700px;
+      max-width: 800px;
+      position: relative;
     }
 
-    .profil-card h2 {
-      color: #ffffff;
+    .profil-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('https://i.imgur.com/C4nDhNf.png');
+      background-size: 200px;
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      opacity: 0.03;
+      pointer-events: none;
     }
 
-    .profil-card p {
-      font-size: 1.1rem;
-      line-height: 1.6;
+    .timeline {
+      position: relative;
+      margin: 2rem 0;
+      padding-left: 30px;
+      border-left: 2px solid #ff003c;
+      text-align: left;
+    }
+
+    .timeline li {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: 0.25rem;
+      width: 16px;
+      height: 16px;
+      background-color: #ff003c;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff003c;
     }
 
     .gallery {
@@ -137,36 +168,10 @@
       transform: scale(1.05);
       box-shadow: 0 0 25px #ff003c;
     }
-
-    input {
-      padding: 0.7rem;
-      margin: 0.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: none;
-    }
-
-    .scrollable-text {
-      height: 60vh;
-      overflow-y: auto;
-      padding-right: 10px;
-      text-align: justify;
-    }
-
-    .scrollable-text::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .scrollable-text::-webkit-scrollbar-thumb {
-      background-color: #ff003c;
-      border-radius: 3px;
-    }
   </style>
 </head>
 <body>
   <div class="scanlines">
-
-    <!-- Page 0: Connexion -->
     <div id="page0" class="page visible">
       <h1>Connexion</h1>
       <input type="text" id="username" placeholder="Identifiant" />
@@ -174,19 +179,30 @@
       <button onclick="login()">Se connecter</button>
     </div>
 
-    <!-- Page 1: Couverture -->
     <div id="page1" class="page">
       <h1>Dossier Confidentiel</h1>
       <p>Division Suzuya - CCG</p>
       <button onclick="nextPage()">Ouvrir le dossier</button>
     </div>
 
-    <!-- Page 2: Présentation -->
     <div id="page2" class="page">
       <div class="profil-card">
-        <h2>Cody Suzuya</h2>
+        <h2>Présentation HRP</h2>
+        <p><strong>Prénom :</strong> Moha</p>
+        <p><strong>Âge :</strong> 25 ans</p>
+        <p><strong>Nationalité :</strong> Marocain</p>
+        <p>Passionné de roleplay depuis 2013, je suis un grand fan de narration immersive et de construction d'univers. GMod est mon terrain d'expression favori.</p>
+      </div>
+      <button onclick="prevPage()">Retour</button>
+      <button onclick="nextPage()">Page suivante</button>
+    </div>
+
+    <div id="page3" class="page">
+      <div class="profil-card">
+        <h2>Présentation du personnage</h2>
+        <p><strong>Nom :</strong> Cody Suzuya</p>
         <p><strong>Âge :</strong> 26 ans</p>
-        <p><strong>Affiliation :</strong> CCG </p>
+        <p><strong>Affiliation :</strong> CCG</p>
         <p><strong>Division visée :</strong> Suzuya Squad</p>
         <p>Inspecteur méthodique, silencieux et déterminé. Cody Suzuya incarne une rigueur glaciale, un esprit d'analyse hors pair et un profond respect pour les méthodes chirurgicales du Clan Suzuya.</p>
       </div>
@@ -194,40 +210,37 @@
       <button onclick="nextPage()">Page suivante</button>
     </div>
 
-    <!-- Page 3: Historique -->
-<div id="page3" class="page">
-  <div class="profil-card">
-    <h2>Historique Personnel</h2>
-    <div class="scrollable-text">
-      <p>
-        Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya, une lignée marquée par la brutalité et la discipline. Dès son enfance, il a été soumis à un entraînement rigoureux, où chaque mouvement, chaque geste, est travaillé sans relâche à l’aide d’armes d’entraînement en bois, simulant le maniement du quinque. Ce dur apprentissage est un rite de passage essentiel pour forger non seulement la force physique, mais aussi le mental d’acier caractéristique des Suzuya.
-      </p>
-      <p>
-        Né dans l’ombre de son père, un inspecteur respecté et redouté au sein du CCG, Cody a grandi avec la conscience aiguë que sa destinée est d’élever le clan toujours plus haut. Sa mère, guerrière aguerrie elle aussi, lui a transmis un sens profond de la loyauté et de la discipline, deux piliers indispensables à la survie et à la suprématie dans ce monde brutal.
-      </p>
-      <p>
-        La perte tragique de sa mère, survenue lors d’une mission périlleuse contre une goule particulièrement vicieuse, fut un tournant décisif pour Cody. Plutôt que de céder à la douleur, il transforma ce chagrin en une force implacable, un feu intérieur qui ne cesse de grandir. Il s’est juré que jamais le clan Suzuya ne serait vulnérable, que leur nom dominerait le CCG et écraserait toutes les menaces.
-      </p>
-      <p>
-        Dans ses jeunes années de formation, Cody perfectionna son habileté avec les armes d’entraînement en bois, apprenant à maîtriser la vitesse, la précision et la brutalité contrôlée qui caractérisent les techniques de combat Suzuya. Cette base solide lui permit, une fois devenu agent officiel, de manier les véritables quinques avec une aisance déconcertante.
-      </p>
-      <p>
-        Au fil des missions, sa réputation s’est construite sur une violence méthodique et un sang-froid hors normes. Il ne laisse aucune place à l’hésitation, agissant toujours avec l’efficacité et la rigueur d’un prédateur. Sa vision est claire : faire rayonner le clan Suzuya comme l’élite incontestée du CCG.
-      </p>
-      <p>
-        Plus qu’un simple combattant, Cody est un stratège qui sait fédérer ses alliés, tisser des liens solides avec les autres branches du CCG pour renforcer sa position. Chaque victoire qu’il remporte est une pierre de plus à l’édifice de la grandeur familiale.
-      </p>
-      <p>
-        Aujourd’hui, Cody Suzuya avance d’un pas sûr vers un futur qu’il façonne de ses mains. Son nom résonne comme un avertissement pour tous ceux qui osent défier le clan. Il incarne la promesse d’un héritage éternel : la domination absolue, portée par une loyauté inébranlable et une détermination sans faille à hisser les Suzuya au sommet du CCG.
-      </p>
-    </div>
-  </div>
-  <button onclick="prevPage()">Retour</button>
-  <button onclick="nextPage()">Page suivante</button>
-</div>
-
-    <!-- Page 4: Compétences -->
     <div id="page4" class="page">
+      <div class="profil-card">
+        <h2>Historique Personnel</h2>
+        <p>Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya, forgé dans la douleur et le feu du combat. Entraîné dès l'enfance aux arts de la guerre, il transforme la perte et le devoir en force glaciale. Stratège, brutal et loyal, il porte l'héritage de son clan avec une obsession méthodique : écraser toute menace au nom de l'ordre.</p>
+      </div>
+      <button onclick="prevPage()">Retour</button>
+      <button onclick="nextPage()">Page suivante</button>
+    </div>
+
+    <div id="page5" class="page">
+      <div class="profil-card">
+        <h2>Expérience Roleplay</h2>
+        <ul class="timeline">
+          <li>Ancien superviseur FOC - Gestion Animation</li>
+          <li>Ancien gérant d’escouade CCG (S4)</li>
+          <li>Pilier Demon Slayer</li>
+          <li>Gérant CWU HL2RP</li>
+          <li>Gérant Milice HL2RP</li>
+          <li>Inspecteur en chef V6-V9-V10 [FOC]</li>
+          <li>Major-Général sur un Owari no Seraph</li>
+          <li>Capitaine d’équipage dans un OnePiece RP</li>
+          <li>Vice-Amiral de la Marine - OnePiece RP</li>
+          <li>Capitaine x2 (Aube d’or, Aigle d’argent) - Black Clover RP</li>
+          <li>Instructeur en chef x2 - SNK RP</li>
+        </ul>
+      </div>
+      <button onclick="prevPage()">Retour</button>
+      <button onclick="nextPage()">Page suivante</button>
+    </div>
+
+    <div id="page6" class="page">
       <div class="profil-card">
         <h2>Compétences & Équipement</h2>
         <p>- Maîtrise du quinque</p>
@@ -236,34 +249,32 @@
         <p>- Maîtrise du terrain urbain</p>
       </div>
       <button onclick="prevPage()">Retour</button>
-      <button onclick="nextPage()">Galerie</button>
+      <button onclick="nextPage()">Page suivante</button>
     </div>
 
-    <!-- Page 5: Galerie -->
-    <div id="page5" class="page">
-      <h2>Galerie d’images</h2>
+    <div id="page7" class="page">
+      <h2>Fin du Dossier</h2>
+      <p>Merci pour votre consultation.</p>
+      <button onclick="prevPage()">Retour</button>
+    </div>
+
+    <div id="page8" class="page">
+      <h2>Galerie</h2>
       <div class="gallery">
-        <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/4:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_3.jpg" alt="Cody Suzuya 1" />
-        <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/3:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_2.jpg" alt="Cody Suzuya 2" />
-        <img src="https://cdn.leonardo.ai/users/11270903-ad67-4d92-877d-ec29492cc940/generations/8a36e053-35b6-41bf-bd04-2dd80d7e6856/segments/2:4:1/Lucid_Realism_A_moody_highcontrast_image_of_a_stoic_Tokyo_Ghou_1.jpg" alt="Cody Suzuya 3" />
+        <img src="https://cdn.wallpapersafari.com/19/5/kr2YvH.jpg" alt="Cody Suzuya 1">
+        <img src="https://pbs.twimg.com/media/FSuNWuLaQAAEqP1.jpg" alt="Cody Suzuya 2">
+        <img src="https://pbs.twimg.com/media/E5xr6UvXoAY3YrF.jpg" alt="Cody Suzuya 3">
       </div>
       <button onclick="prevPage()">Retour</button>
-      <button onclick="nextPage()">Fin</button>
-    </div>
-
-    <!-- Page 6: Fin -->
-    <div id="page6" class="page">
-      <h1>Fin du Dossier</h1>
-      <button onclick="prevPage()">Retour à la galerie</button>
+      <button onclick="showPage(0)">Retour à l'accueil</button>
     </div>
   </div>
 
-  <!-- Son électronique -->
   <audio id="page-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f5e71f4e0b.mp3?filename=digital-typ-1-188137.mp3" preload="auto"></audio>
 
   <script>
     let currentPage = 0;
-    const maxPage = 6;
+    const maxPage = 8;
 
     function showPage(num) {
       for (let i = 0; i <= maxPage; i++) {
@@ -319,7 +330,7 @@
       const user = document.getElementById('username').value.trim();
       const pass = document.getElementById('password').value.trim();
 
-      if (user === 'ccg' && pass === 'suzuya') {
+      if (user === 'admin' && pass === 'password123') {
         showPage(1);
       } else {
         alert("Identifiant ou mot de passe incorrect.");
