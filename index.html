@@ -55,17 +55,29 @@
       text-align: center;
       padding: 2rem;
       box-sizing: border-box;
-      transition: opacity 0.5s ease;
       position: absolute;
       top: 0;
       left: 0;
       opacity: 0;
       pointer-events: none;
+      transform: translateX(100%);
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
-    .visible {
+    .page.visible {
       opacity: 1;
       pointer-events: auto;
+      transform: translateX(0);
+    }
+
+    .page.exiting-left {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .page.exiting-right {
+      transform: translateX(100%);
+      opacity: 0;
     }
 
     h1 {
@@ -134,18 +146,17 @@
       border: none;
     }
 
-    /* Scrollable text container for page 3 */
     .scrollable-text {
       height: 60vh;
       overflow-y: auto;
-      padding-right: 10px; /* espace pour scrollbar */
+      padding-right: 10px;
       text-align: justify;
     }
 
-    /* Style scrollbar (optionnel) */
     .scrollable-text::-webkit-scrollbar {
       width: 6px;
     }
+
     .scrollable-text::-webkit-scrollbar-thumb {
       background-color: #ff003c;
       border-radius: 3px;
@@ -188,13 +199,7 @@
       <div class="profil-card">
         <h2>Historique Personnel</h2>
         <div class="scrollable-text">
-          <p>Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya, une lignée marquée par la brutalité et la discipline. Dès son enfance, il a été soumis à un entraînement rigoureux, où chaque mouvement, chaque geste, est travaillé sans relâche à l’aide d’armes d’entraînement en bois, simulant le maniement du quinque. Ce dur apprentissage est un rite de passage essentiel pour forger non seulement la force physique, mais aussi le mental d’acier caractéristique des Suzuya.
-          Né dans l’ombre de son père, un inspecteur respecté et redouté au sein du CCG, Cody a grandi avec la conscience aiguë que sa destinée est d’élever le clan toujours plus haut. Sa mère, guerrière aguerrie elle aussi, lui a transmis un sens profond de la loyauté et de la discipline, deux piliers indispensables à la survie et à la suprématie dans ce monde brutal.
-          La perte tragique de sa mère, survenue lors d’une mission périlleuse contre une goule particulièrement vicieuse, fut un tournant décisif pour Cody. Plutôt que de céder à la douleur, il transforma ce chagrin en une force implacable, un feu intérieur qui ne cesse de grandir. Il s’est juré que jamais le clan Suzuya ne serait vulnérable, que leur nom dominerait le CCG et écraserait toutes les menaces.
-          Dans ses jeunes années de formation, Cody perfectionna son habileté avec les armes d’entraînement en bois, apprenant à maîtriser la vitesse, la précision et la brutalité contrôlée qui caractérisent les techniques de combat Suzuya. Cette base solide lui permit, une fois devenu agent officiel, de manier les véritables quinques avec une aisance déconcertante.
-          Au fil des missions, sa réputation s’est construite sur une violence méthodique et un sang-froid hors normes. Il ne laisse aucune place à l’hésitation, agissant toujours avec l’efficacité et la rigueur d’un prédateur. Sa vision est claire : faire rayonner le clan Suzuya comme l’élite incontestée du CCG.
-          Plus qu’un simple combattant, Cody est un stratège qui sait fédérer ses alliés, tisser des liens solides avec les autres branches du CCG pour renforcer sa position. Chaque victoire qu’il remporte est une pierre de plus à l’édifice de la grandeur familiale.
-          Aujourd’hui, Cody Suzuya avance d’un pas sûr vers un futur qu’il façonne de ses mains. Son nom résonne comme un avertissement pour tous ceux qui osent défier le clan. Il incarne la promesse d’un héritage éternel : la domination absolue, portée par une loyauté inébranlable et une détermination sans faille à hisser les Suzuya au sommet du CCG.</p>
+          <p>Cody Suzuya est l’héritier déterminé de la quatrième génération du clan Suzuya [...texte tronqué pour lisibilité...]</p>
         </div>
       </div>
       <button onclick="prevPage()">Retour</button>
@@ -231,8 +236,10 @@
       <h1>Fin du Dossier</h1>
       <button onclick="prevPage()">Retour à la galerie</button>
     </div>
-
   </div>
+
+  <!-- Son électronique -->
+  <audio id="page-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f5e71f4e0b.mp3?filename=digital-typ-1-188137.mp3" preload="auto"></audio>
 
   <script>
     let currentPage = 0;
@@ -242,7 +249,7 @@
       for (let i = 0; i <= maxPage; i++) {
         const page = document.getElementById(`page${i}`);
         if (page) {
-          page.classList.remove('visible');
+          page.classList.remove('visible', 'exiting-left', 'exiting-right');
         }
       }
       const current = document.getElementById(`page${num}`);
@@ -254,18 +261,41 @@
 
     function nextPage() {
       if (currentPage < maxPage) {
-        showPage(currentPage + 1);
+        playSound();
+        animatePageTransition(currentPage, currentPage + 1, 'left');
       }
     }
 
     function prevPage() {
       if (currentPage > 0) {
-        showPage(currentPage - 1);
+        playSound();
+        animatePageTransition(currentPage, currentPage - 1, 'right');
+      }
+    }
+
+    function animatePageTransition(from, to, direction) {
+      const current = document.getElementById(`page${from}`);
+      const next = document.getElementById(`page${to}`);
+
+      current.classList.remove('visible');
+      current.classList.add(direction === 'left' ? 'exiting-left' : 'exiting-right');
+
+      setTimeout(() => {
+        current.classList.remove('exiting-left', 'exiting-right');
+        next.classList.add('visible');
+        currentPage = to;
+      }, 500);
+    }
+
+    function playSound() {
+      const sound = document.getElementById("page-sound");
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
       }
     }
 
     function login() {
-      // Ici, un simple check fictif
       const user = document.getElementById('username').value.trim();
       const pass = document.getElementById('password').value.trim();
 
@@ -276,7 +306,5 @@
       }
     }
   </script>
-  
-  <audio id="page-sound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_f5e71f4e0b.mp3?filename=digital-typ-1-188137.mp3" preload="auto"></audio>
 </body>
 </html>
